@@ -72,6 +72,8 @@ angemeldete Git-Identität voraus.
 - Kein Cookie-Tracking und keine Analyse-Skripte eingebaut
 - Mobilmenü, FAQ und Matching-Beispiel
 - Kontaktaufnahme über das E-Mail-Programm des Besuchers, kein Serverformular
+- Demo- und Footer-Kontakt öffnen eine vorbereitete E-Mail an
+  `johann.kern1161@gmail.com` mit Betreff und Nachrichtentext
 - Beispielansicht und Beispielinvestor sind fiktiv gekennzeichnet
 
 Die eigentliche OffMarketDeals-Software ist nicht Bestandteil dieser Website;
