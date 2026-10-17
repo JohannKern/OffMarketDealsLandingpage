@@ -1,4 +1,4 @@
-# OffMarketDeal – Landingpage
+# OffMarketDeals – Landingpage
 
 Die öffentliche Landingpage ist unter folgender Adresse erreichbar:
 
@@ -55,7 +55,7 @@ angemeldete Git-Identität voraus.
 
 ## Vor einer Veröffentlichung prüfen
 
-- Die E-Mail-Adresse `kontakt@offmarketdeal.de` in `index.html` ist ein
+- Die E-Mail-Adresse `kontakt@offmarketdeals.de` in `index.html` ist ein
   Platzhalter. Prüfe und ersetze `CONTACT_EMAIL` sowie die beiden fest im HTML
   hinterlegten `mailto:`-Links durch die tatsächlich gewünschte Kontaktadresse.
 - Ergänze ein rechtskonformes Impressum und eine individuelle
@@ -74,5 +74,5 @@ angemeldete Git-Identität voraus.
 - Kontaktaufnahme über das E-Mail-Programm des Besuchers, kein Serverformular
 - Beispielansicht und Beispielinvestor sind fiktiv gekennzeichnet
 
-Die eigentliche OffMarketDeal-Software ist nicht Bestandteil dieser Website;
+Die eigentliche OffMarketDeals-Software ist nicht Bestandteil dieser Website;
 die Landingpage dient ausschließlich der Produktpräsentation.
