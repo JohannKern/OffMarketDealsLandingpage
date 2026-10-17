@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10342f">
+  <meta name="description" content="OffMarketDeal – Ihr digitaler Immobilienassistent. Finden Sie passende Käufer für Ihre Gewerbeimmobilien in Ihren bestehenden Kontakten, Suchprofilen und Dokumenten. Intelligent, diskret und unter Ihrer Kontrolle.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="OffMarketDeal – Der passende Käufer ist vielleicht schon in Ihren Kontakten">
+  <meta property="og:description" content="Weniger suchen. Mehr passende Käufer finden. Diskret vermitteln.">
+  <title>OffMarketDeal – Ihr digitaler Immobilienassistent</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2310342f'/%3E%3Cpath d='M18 22h19v19H18zM27 14h19v19H27z' fill='none' stroke='%23d4f0a4' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --ink:#112d29;--ink2:#1d3d37;--text:#273e38;--muted:#64746e;--paper:#f8f9f5;--white:#fff;
+      --line:#dfE7df;--mint:#d3edac;--mint-bright:#d8f29f;--tint:#edf3e7;--warm:#f6f4ec;
+      --shadow:0 25px 65px rgba(18,49,39,.11);--radius:24px;--container:1184px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Aptos","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    button,input,textarea{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a{color:inherit;text-decoration:none}
+    img,svg{display:block;max-width:100%}
+    ::selection{color:#112d29;background:#d3edac}
+    :focus-visible{outline:3px solid #74ad6f;outline-offset:4px}
+    .container{width:min(var(--container),calc(100% - 72px));margin-inline:auto}
+    .skip-link{position:absolute;z-index:999;left:20px;top:-80px;background:var(--white);color:var(--ink);padding:12px 18px;border-radius:10px}
+    .skip-link:focus{top:12px}
+    .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .icon{height:22px;width:22px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8;flex:none}
+    .icon-sm{width:18px;height:18px}
+    .button{min-height:52px;border:1px solid transparent;border-radius:999px;padding:0 24px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:750;letter-spacing:-.01em;font-size:14px;line-height:1.2;transition:background .2s,transform .2s,box-shadow .2s,color .2s;cursor:pointer;white-space:nowrap}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{background:var(--mint-bright);color:#17342a;box-shadow:0 10px 25px rgba(142,188,104,.17)}
+    .button-primary:hover{background:#e7fabd;box-shadow:0 13px 27px rgba(142,188,104,.28)}
+    .button-dark{background:var(--ink);color:white}
+    .button-dark:hover{background:#285247}
+    .button-outline{border-color:#b7c6bd;background:transparent;color:var(--ink)}
+    .button-outline:hover{background:var(--white)}
+    .button .icon{width:18px;height:18px}
+    .eyebrow{display:flex;align-items:center;gap:11px;font-size:11px;line-height:1.4;letter-spacing:.17em;text-transform:uppercase;font-weight:830;color:#426750}
+    .eyebrow::before{content:"";display:block;width:22px;height:2px;border-radius:4px;background:#83b479}
+    .section-head{max-width:750px}
+    .section-head.centered{text-align:center;margin-inline:auto}
+    .section-head.centered .eyebrow{justify-content:center}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{letter-spacing:-.055em}
+    h1{font-size:clamp(45px,4.75vw,71px);line-height:1.065;font-weight:790;margin:22px 0 24px;max-width:690px}
+    h2{font-size:clamp(37px,4.15vw,57px);line-height:1.105;font-weight:775;margin:19px 0 19px}
+    h3{font-size:21px;line-height:1.25;font-weight:740;letter-spacing:-.035em;margin:0 0 11px}
+    p{font-size:16px;line-height:1.75;color:var(--text);margin-bottom:17px}
+    .lead{font-size:17.5px;line-height:1.74;color:#53655e;max-width:670px}
+    .italic-accent{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-style:italic;letter-spacing:-.065em}
+    .subtle-dot{height:8px;width:8px;border-radius:50%;background:#a8df70;box-shadow:0 0 0 5px rgba(168,223,112,.14);flex:none}
+
+    /* navigation */
+    .site-header{position:sticky;top:0;z-index:100;background:rgba(248,249,245,.92);border-bottom:1px solid rgba(28,63,49,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .nav-inner{height:86px;display:flex;align-items:center;gap:24px;justify-content:space-between}
+    .brand{display:inline-flex;align-items:center;gap:10px;flex:none;font-size:21px;letter-spacing:-.07em;font-weight:820;color:var(--ink);line-height:1}
+    .brand b{font-weight:820}.brand span span{color:#78a170}
+    .brand-mark{height:38px;width:38px;display:grid;place-items:center;border-radius:12px;background:var(--ink);color:var(--mint)}
+    .brand-mark svg{width:23px;height:23px}
+    .nav-links{display:flex;align-items:center;gap:33px;margin-left:auto}
+    .nav-links a{font-size:13px;line-height:1.4;font-weight:700;color:#41564e;transition:color .2s}
+    .nav-links a:hover{color:#66a34d}
+    .header-cta{margin-left:12px;min-height:43px;padding:0 19px}
+    .mobile-toggle{display:none;align-items:center;justify-content:center;height:44px;width:44px;border-radius:12px;border:1px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer}
+
+    /* hero */
+    .hero{padding:91px 0 94px;overflow:hidden;position:relative}
+    .hero::before{content:"";position:absolute;pointer-events:none;width:740px;height:740px;right:-310px;top:-290px;background:radial-gradient(circle,rgba(218,233,204,.5),transparent 69%)}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:65px;align-items:center;position:relative}
+    .hero-copy{position:relative;z-index:2;padding-bottom:8px}
+    .hero-kicker{display:inline-flex;gap:10px;align-items:center;background:#edf4e6;color:#42674f;padding:10px 13px;border-radius:40px;font-size:10.5px;font-weight:830;letter-spacing:.115em;text-transform:uppercase}
+    .hero-kicker .subtle-dot{width:6px;height:6px;box-shadow:none}
+    .hero h1 span{color:#558863}
+    .hero .lead{max-width:575px;font-size:17px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:29px}
+    .hero-note{display:flex;align-items:center;gap:13px;margin-top:32px;font-size:12.5px;font-weight:675;color:#718177}
+    .hero-note .icon{color:#5a9669}
+    .hero-note .sep{height:4px;width:4px;background:#91a198;border-radius:50%}
+    .visual-wrap{position:relative;min-width:0}
+    .hero-visual{border-radius:30px;background:radial-gradient(ellipse at 71% 24%,#3f6c61,transparent 50%),linear-gradient(145deg,#345c52,#0c2727 78%);min-height:582px;overflow:hidden;position:relative;box-shadow:0 32px 80px rgba(24,59,49,.2);isolation:isolate}
+    .hero-visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(234,252,233,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(234,252,233,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,black,transparent 78%);z-index:-1}
+    .art-building{position:absolute;left:2%;right:0;bottom:0;width:104%;height:85%;opacity:.99}
+    .visual-topline{position:absolute;left:28px;right:28px;top:26px;display:flex;align-items:center;justify-content:space-between;color:#dfece3;font-size:10px;letter-spacing:.12em;font-weight:700}
+    .visual-topline > span:last-child{display:flex;align-items:center;gap:7px;color:#c9e7c5;letter-spacing:.02em;font-size:10px}
+    .visual-topline .subtle-dot{height:6px;width:6px;box-shadow:0 0 0 4px rgba(168,223,112,.09)}
+    .visual-bottom-gradient{position:absolute;bottom:0;height:34%;left:0;right:0;background:linear-gradient(transparent,rgba(5,26,23,.55))}
+    .property-note{position:absolute;top:92px;left:28px;padding:17px 19px;border:1px solid rgba(239,255,242,.14);background:rgba(13,43,38,.7);backdrop-filter:blur(10px);border-radius:17px;color:#e9f5eb;box-shadow:0 14px 33px rgba(0,0,0,.13)}
+    .property-note .tiny{font-size:10px;font-weight:800;letter-spacing:.14em;color:#bad3be;margin-bottom:11px}
+    .property-note strong{font-size:16px;letter-spacing:-.025em;display:block;margin-bottom:5px}
+    .property-note .value{font-size:13px;color:#d3e4d9}
+    .match-card{position:absolute;right:22px;bottom:34px;width:min(338px,calc(100% - 50px));padding:21px 22px 19px;background:#fcfefa;border-radius:19px;box-shadow:0 16px 60px rgba(0,22,16,.24)}
+    .match-head{display:flex;align-items:center;gap:11px;padding-bottom:17px;border-bottom:1px solid #e7eee6}
+    .match-icon{width:40px;height:40px;border-radius:12px;background:#e8f5d2;display:grid;place-items:center;color:#497a45}
+    .match-head small{color:#678171;font-size:10px;letter-spacing:.1em;font-weight:820;display:block;margin-bottom:4px}
+    .match-head strong{display:block;color:#183d2d;font-size:15px;letter-spacing:-.02em}
+    .match-body{padding-top:15px}
+    .match-name{font-weight:790;font-size:14px;margin-bottom:11px;color:#18352b}
+    .match-row{display:flex;align-items:center;gap:7px;font-size:12px;color:#64776b;margin-top:8px}
+    .match-row .icon{height:14px;width:14px;color:#79a16c}
+    .match-status{margin-top:16px;border-radius:8px;background:#e9f7df;color:#416a38;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:760;padding:10px 12px}
+    .match-status .icon{height:15px;width:15px}
+    .visual-stamp{position:absolute;transform:rotate(-7deg);left:35px;bottom:44px;border:1px solid rgba(223,251,225,.33);color:#dcf0db;border-radius:100px;font-size:10px;font-weight:790;letter-spacing:.13em;padding:9px 13px}
+
+    /* feature strip */
+    .trust-strip{border-top:1px solid #e5eae2;border-bottom:1px solid #e5eae2;background:#f4f6f0}
+    .trust-list{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;padding:25px 0}
+    .trust-item{display:flex;align-items:center;justify-content:center;gap:12px;font-size:12.5px;color:#486053;font-weight:760;letter-spacing:-.01em}
+    .trust-item .icon{width:18px;height:18px;color:#729869}
+
+    /* problem */
+    .section{padding:118px 0}
+    .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:106px;align-items:center}
+    .problem-grid .section-head{max-width:550px}
+    .problem-grid p{max-width:540px}
+    .statement{font-size:17px;line-height:1.65;font-weight:800;color:var(--ink);margin:22px 0 0}
+    .clutter-area{height:420px;position:relative;border-radius:26px;background:linear-gradient(145deg,#edf1e8,#e5eddf);overflow:hidden;border:1px solid #e0e9db}
+    .clutter-area::after{content:"";inset:0;position:absolute;background:radial-gradient(circle at 50% 45%,transparent 15%,rgba(236,242,228,.9) 88%);pointer-events:none}
+    .floating-doc{position:absolute;display:flex;align-items:center;gap:14px;width:285px;min-height:73px;padding:14px 17px;border-radius:12px;background:#fff;box-shadow:0 16px 44px rgba(43,69,47,.11);border:1px solid #e5eae2}
+    .doc-a{top:46px;left:14%;transform:rotate(-9deg)}
+    .doc-b{top:161px;right:8%;transform:rotate(8deg)}
+    .doc-c{bottom:47px;left:11%;transform:rotate(-5deg)}
+    .doc-icon{height:39px;width:39px;border-radius:9px;display:grid;place-items:center;background:#e7f2df;color:#547c4c}
+    .doc-icon.orange{background:#f7e7d9;color:#ac754b}
+    .doc-icon.blue{background:#e4edf5;color:#59798e}
+    .doc-icon .icon{width:21px;height:21px}
+    .doc-title{font-weight:790;letter-spacing:-.02em;font-size:13px;color:#2e413a;display:block;margin-bottom:4px}
+    .doc-desc{font-size:11.5px;color:#83928a}
+    .doc-lines{margin-left:auto;display:flex;flex-direction:column;gap:5px}
+    .doc-lines span{height:4px;width:26px;background:#e7ebe6;border-radius:8px}
+    .doc-lines span:last-child{width:17px}
+    .clutter-question{position:absolute;top:43%;left:45%;transform:translate(-50%,-50%);height:93px;width:93px;z-index:2;display:grid;place-items:center;border-radius:50%;background:var(--ink);border:8px solid #eaf1e4;color:var(--mint);font-size:44px;font-family:Georgia,serif;box-shadow:0 20px 42px rgba(20,52,41,.21)}
+    .clutter-caption{position:absolute;bottom:17px;right:18px;z-index:3;color:#687e70;font-size:11px;font-weight:700}
+
+    /* process */
+    .process{background:#fff;padding:116px 0 121px}
+    .process-intro{display:flex;justify-content:space-between;align-items:end;gap:42px;margin-bottom:58px}
+    .process-intro .section-head{max-width:650px}
+    .process-intro .lead{max-width:350px;margin:0 0 10px;font-size:15px}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+    .step{border:1px solid #e2e9e1;background:#fbfcf8;padding:26px 24px 27px;border-radius:20px;position:relative;min-height:303px;transition:border-color .2s,transform .2s,box-shadow .2s}
+    .step:hover{border-color:#b7d2a8;transform:translateY(-4px);box-shadow:0 14px 36px rgba(35,72,51,.08)}
+    .step-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:29px}
+    .step-icon{height:50px;width:50px;border-radius:15px;background:#eaf4e3;display:grid;place-items:center;color:#567d4f}
+    .step-number{font-size:12px;letter-spacing:.08em;color:#a9b7ac;font-weight:850}
+    .step h3{font-size:19px;margin-bottom:11px}
+    .step p{font-size:13.5px;line-height:1.72;color:#718176;margin:0}
+    .process-footnote{display:flex;gap:10px;align-items:center;margin:22px 0 0;font-size:12px;color:#7e8b7f}
+    .process-footnote .icon{height:16px;width:16px;flex:none}
+
+    /* example */
+    .example{background:#ecf2e9;padding:118px 0}
+    .example-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:92px;align-items:center}
+    .example .section-head{max-width:475px}
+    .example .section-head .lead{margin-bottom:27px}
+    .investor-quote{border-left:3px solid #9bca85;padding:3px 0 3px 22px;margin:27px 0 21px;font-size:19px;color:#355545;line-height:1.56;font-family:Georgia,serif;font-style:italic;max-width:490px}
+    .quote-source{font-size:12px;line-height:1.6;color:#718272;font-weight:700}
+    .demo-ui{background:#fdfefa;box-shadow:var(--shadow);border:1px solid #dde7d9;border-radius:25px;overflow:hidden}
+    .demo-topbar{height:53px;display:flex;align-items:center;justify-content:space-between;padding:0 23px;border-bottom:1px solid #e4eae0;background:#fff}
+    .demo-label{font-size:11px;font-weight:850;color:#748279;letter-spacing:.12em}
+    .demo-tag{font-size:10px;font-weight:760;color:#6b806e;background:#f0f5ed;border-radius:6px;padding:7px 9px}
+    .demo-content{padding:24px}
+    .mini-heading{font-size:10px;color:#8b998d;font-weight:860;letter-spacing:.105em;margin:0 0 12px}
+    .asset-box{border:1px solid #e2eae0;border-radius:13px;display:flex;gap:17px;background:#fff;padding:12px;align-items:center}
+    .asset-thumb{background:linear-gradient(155deg,#e4e8e1,#bed1c6);width:105px;min-width:105px;height:96px;border-radius:8px;overflow:hidden;position:relative}
+    .asset-thumb svg{width:100%;height:100%}
+    .asset-title{font-size:16px;color:#213d32;font-weight:800;margin-bottom:7px;letter-spacing:-.03em}
+    .asset-meta{font-size:12px;color:#7f8d82;line-height:1.8}
+    .budget{display:inline-block;background:#eaf5e0;color:#457247;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:800;margin-top:8px}
+    .connection{display:flex;align-items:center;justify-content:center;height:54px;color:#769b67;position:relative}
+    .connection::before{content:"";height:45px;border-left:2px dashed #a5c395;position:absolute;z-index:0}
+    .connection .connection-icon{position:relative;z-index:1;width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:#e0f1d3;border:4px solid #fdfefa}
+    .connection .icon{height:17px;width:17px}
+    .buyer-box{background:#f0f7e9;border:1px solid #cbe1c4;border-radius:14px;padding:18px 20px}
+    .buyer-line{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .buyer-main{display:flex;align-items:center;gap:12px;min-width:0}
+    .buyer-avatar{width:42px;height:42px;min-width:42px;border-radius:12px;background:#d2e8c6;color:#466d43;display:grid;place-items:center;font-size:13px;font-weight:850}
+    .buyer-main strong{font-size:14px;color:#2d503a;letter-spacing:-.015em;display:block;margin-bottom:6px}
+    .buyer-main small{font-size:11px;color:#6d8572}
+    .buyer-pill{color:#3f713e;background:#d9edcc;font-size:10px;font-weight:840;padding:7px 9px;border-radius:7px;white-space:nowrap}
+    .criteria{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+    .criterion{font-size:10px;display:inline-flex;gap:5px;align-items:center;background:#fff;padding:7px 10px;border-radius:7px;color:#567e4c;font-weight:740}
+    .criterion .icon{width:13px;height:13px}
+    .example-toggle{width:100%;border:0;background:transparent;color:#50764d;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:19px 3px 2px;font-size:12px;font-weight:780;cursor:pointer}
+    .example-toggle .chevron{transition:transform .2s}
+    .example-toggle[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+    .match-details{padding:18px;border-top:1px solid #e4ebe0;margin-top:15px;background:#f5f9f1;border-radius:12px;color:#506752}
+    .match-details[hidden]{display:none}
+    .match-details p{font-size:12px;line-height:1.65;margin:0}
+    .match-details strong{font-size:12px;color:#355842}
+    .demo-disclaimer{color:#77877a;font-size:11px;line-height:1.6;text-align:center;margin:15px 0 0}
+
+    /* benefits */
+    .benefits{background:#fff;padding:118px 0 120px}
+    .benefits .section-head{margin-bottom:46px}
+    .benefit-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+    .benefit{grid-column:span 2;background:#f7f9f4;border:1px solid #ebefea;border-radius:22px;padding:30px;min-height:254px;transition:transform .2s,border-color .2s}
+    .benefit:hover{transform:translateY(-3px);border-color:#c5d9be}
+    .benefit:nth-child(4),.benefit:nth-child(5){grid-column:span 3;min-height:220px}
+    .benefit .benefit-icon{width:48px;height:48px;border-radius:13px;background:#e5f1df;color:#5c8754;display:grid;place-items:center;margin-bottom:28px}
+    .benefit h3{font-size:19px;margin-bottom:9px}
+    .benefit p{font-size:13px;color:#738076;line-height:1.72;margin:0;max-width:350px}
+
+    /* privacy */
+    .privacy{padding:116px 0 114px;background:var(--ink);position:relative;overflow:hidden}
+    .privacy::before{content:"";position:absolute;height:670px;width:670px;right:-230px;top:-310px;border:1px solid rgba(205,239,194,.12);border-radius:50%;box-shadow:0 0 0 95px rgba(201,243,195,.025),0 0 0 190px rgba(201,243,195,.021)}
+    .privacy-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;position:relative}
+    .privacy .eyebrow{color:#b9d99f}.privacy .eyebrow::before{background:#a8d895}
+    .privacy h2{color:white;max-width:555px}
+    .privacy p{color:#bed0c4;max-width:532px}
+    .privacy-note{font-weight:760!important;color:#e0e9dd!important;margin-top:25px}
+    .privacy-cards{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .privacy-card{background:rgba(255,255,255,.075);border:1px solid rgba(231,252,221,.12);padding:23px 20px;border-radius:17px;min-height:178px}
+    .privacy-card .icon{color:var(--mint);width:25px;height:25px;margin-bottom:23px}
+    .privacy-card strong{color:#f0faf0;font-size:14px;display:block;line-height:1.4;margin-bottom:7px;letter-spacing:-.02em}
+    .privacy-card p{font-size:11.5px;line-height:1.65;color:#b3c8bb;margin:0}
+
+    /* broker statement */
+    .broker{padding:108px 0;background:var(--warm)}
+    .broker-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:90px}
+    .broker h2{max-width:580px}
+    .broker h2 span{color:#659573}
+    .broker-content{border-left:1px solid #d6e0d3;padding-left:42px}
+    .broker-content p{font-size:16px;line-height:1.83;color:#5b6c62}
+    .broker-list{display:grid;gap:16px;margin-top:26px}
+    .broker-list-item{display:flex;gap:12px;align-items:flex-start;color:#254537;font-size:14px;line-height:1.5;font-weight:760}
+    .broker-list-item .icon{height:20px;width:20px;color:#6e9c63}
+
+    /* FAQ */
+    .faq{padding:113px 0 119px;background:#fff}
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:start}
+    .faq .section-head h2{max-width:440px}
+    .faq .section-head p{font-size:15px;max-width:340px}
+    .faq-list{border-top:1px solid #dfe9dc}
+    .faq-item{border-bottom:1px solid #dfe9dc}
+    .faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:79px;cursor:pointer;font-weight:780;color:#28483a;font-size:15px;letter-spacing:-.015em;padding:16px 0}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary .plus{height:30px;width:30px;flex:none;border-radius:50%;display:grid;place-items:center;background:#ecf4e7;color:#5a8054;transition:transform .2s}
+    .faq-item[open] summary .plus{transform:rotate(45deg)}
+    .faq-item p{padding-right:43px;margin:-1px 0 24px;font-size:13.5px;line-height:1.76;color:#718075}
+
+    /* CTA + footer */
+    .contact{padding:0 0 33px;background:#fff}
+    .contact-inner{background:radial-gradient(circle at 85% -10%,#4d7660 0%,transparent 39%),#173c34;border-radius:30px;padding:71px 85px;display:flex;align-items:center;justify-content:space-between;gap:45px;color:white;overflow:hidden;position:relative}
+    .contact-inner::after{content:"";position:absolute;right:22%;height:420px;width:420px;border:1px solid rgba(236,255,230,.07);border-radius:50%;pointer-events:none}
+    .contact-content{position:relative;z-index:1;max-width:655px}
+    .contact h2{color:white;margin:0 0 17px;font-size:clamp(34px,3.6vw,49px)}
+    .contact h2 span{color:var(--mint)}
+    .contact p{color:#cbded0;margin:0;font-size:15px;line-height:1.7}
+    .contact .button{position:relative;z-index:1;flex:none}
+    .site-footer{background:#fff;padding:25px 0 40px}
+    .footer-inner{border-top:1px solid #e6ece5;padding-top:31px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .site-footer .brand{font-size:18px}.site-footer .brand-mark{width:31px;height:31px;border-radius:9px}.site-footer .brand-mark svg{width:18px;height:18px}
+    .footer-copy{font-size:11.5px;color:#89958b;margin-top:8px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;font-size:12px;color:#738276;font-weight:650}
+    .footer-links a:hover{color:#375d3f}
+    .photo-credits{font-size:10px;color:#a5afa5;text-align:center;margin-top:26px}
+    .reveal{opacity:1;transform:none}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:1140px){
+      .nav-links{gap:23px}.hero-grid{gap:35px}.hero h1{font-size:clamp(45px,5.3vw,60px)}
+      .problem-grid,.example-grid,.privacy-grid,.broker-grid{gap:60px}.faq-grid{gap:60px}.hero-visual{min-height:544px}
+      .contact-inner{padding:60px}
+    }
+    @media (max-width:950px){
+      .container{width:min(var(--container),calc(100% - 44px))}
+      .nav-inner{height:76px}.nav-links{gap:17px}.nav-links a{font-size:12px}.header-cta{padding:0 14px;font-size:12px}
+      .hero{padding:65px 0 72px}.hero-grid{grid-template-columns:1fr 1fr;gap:25px}.hero h1{font-size:clamp(39px,5.35vw,53px)}.hero .lead{font-size:15px}
+      .hero-visual{min-height:515px}.property-note{left:15px;top:79px}.match-card{right:12px;bottom:22px;width:290px;padding:18px}
+      .section,.process,.example,.benefits,.privacy,.broker,.faq{padding-top:88px;padding-bottom:92px}
+      h2{font-size:clamp(36px,4.7vw,47px)}.steps{grid-template-columns:repeat(2,1fr)}.step{min-height:238px}
+      .benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.benefit,.benefit:nth-child(4),.benefit:nth-child(5){grid-column:span 1;min-height:240px}
+      .benefit:nth-child(5){grid-column:1 / -1;min-height:200px}
+      .privacy-grid{gap:42px}.privacy-cards{gap:9px}.privacy-card{padding:20px 16px}
+      .contact-inner{padding:56px 42px}
+    }
+    @media(max-width:730px){
+      html{scroll-padding-top:83px}
+      .container{width:calc(100% - 38px)}
+      .nav-inner{height:70px}.brand{font-size:19px}.brand-mark{height:35px;width:35px}
+      .mobile-toggle{display:flex;margin-left:auto}.header-cta{margin:0;min-height:42px;padding:0 15px}
+      .nav-links{display:none;position:absolute;top:69px;left:0;right:0;padding:18px 19px 23px;background:#fbfcf9;border-bottom:1px solid #e0e8db;box-shadow:0 18px 30px rgba(12,37,26,.07);flex-direction:column;align-items:stretch;gap:0}
+      .nav-links.is-open{display:flex}.nav-links a{font-size:15px;padding:14px 7px;border-bottom:1px solid #eef1eb}
+      .hero{padding:62px 0 65px}.hero-grid{grid-template-columns:1fr;gap:42px}.hero-copy{padding:0}.hero h1{font-size:clamp(42px,8.1vw,65px);max-width:610px;margin:19px 0 22px}.hero .lead{font-size:16px;max-width:600px}.hero-note{margin-top:27px}
+      .hero-visual{min-height:570px;max-width:620px;margin:auto}.visual-wrap{max-width:660px;width:100%;margin-inline:auto}
+      .trust-list{grid-template-columns:1fr;gap:15px;padding:21px 0}.trust-item{justify-content:flex-start}
+      .section,.process,.example,.benefits,.privacy,.broker,.faq{padding:82px 0}
+      .problem-grid,.example-grid,.privacy-grid,.broker-grid,.faq-grid{grid-template-columns:1fr;gap:35px}
+      .problem-grid p{max-width:unset}.clutter-area{max-width:620px;width:100%;margin-inline:auto}
+      .process-intro{display:block;margin-bottom:35px}.process-intro .lead{max-width:630px;margin:8px 0 0}
+      .steps{gap:13px}.step{padding:24px;min-height:250px}.step-top{margin-bottom:22px}
+      .example .section-head{max-width:620px}.demo-ui{max-width:610px;margin-inline:auto}
+      .benefit-grid{gap:13px}.benefit{padding:25px;min-height:245px}
+      .privacy-grid{gap:32px}.privacy h2{max-width:630px}.privacy-cards{max-width:690px}
+      .broker-content{border-left:0;border-top:1px solid #d6e0d3;padding-left:0;padding-top:25px}
+      .faq-grid{gap:26px}.faq .section-head p{max-width:640px}
+      .contact-inner{flex-direction:column;align-items:flex-start;gap:30px;padding:52px 35px}.contact .button{align-self:flex-start}
+    }
+    @media(max-width:480px){
+      .container{width:calc(100% - 32px)}
+      .header-cta{font-size:11px;padding:0 13px;min-height:39px}.header-cta .icon{display:none}
+      .brand{font-size:17px;gap:7px}.brand-mark{width:32px;height:32px}
+      .mobile-toggle{width:39px;height:39px}
+      .hero{padding:47px 0 58px}.hero h1{font-size:clamp(38px,10.8vw,50px)}.hero-kicker{font-size:9px}.hero-actions{gap:10px}.hero-actions .button{width:100%}.hero-note{flex-wrap:wrap;font-size:11px;gap:9px}
+      .hero-visual{min-height:485px;border-radius:22px}.art-building{height:85%;width:120%;left:-7%}.visual-topline{top:22px;left:18px;right:18px;font-size:9px}.property-note{top:72px;left:16px;padding:13px 14px}.property-note strong{font-size:13px}.property-note .value{font-size:11px}
+      .match-card{right:12px;bottom:18px;width:min(290px,calc(100% - 24px));padding:16px}.match-head{padding-bottom:12px}.match-body{padding-top:11px}.visual-stamp{display:none}
+      .section,.process,.example,.benefits,.privacy,.broker,.faq{padding:71px 0}
+      h2{font-size:clamp(33px,9.15vw,43px)}.lead{font-size:15.5px}.eyebrow{font-size:10px}
+      .clutter-area{height:330px}.floating-doc{width:220px;min-height:62px;padding:10px}.doc-a{top:35px;left:5%}.doc-b{top:132px;right:4%}.doc-c{bottom:33px;left:7%}.doc-title{font-size:11px}.doc-desc{font-size:10px}.doc-icon{width:31px;height:31px;flex:none}.doc-icon .icon{width:17px;height:17px}.clutter-question{height:77px;width:77px;font-size:35px}
+      .steps{grid-template-columns:1fr}.step{min-height:unset;padding:23px}.step-top{margin-bottom:18px}.step h3{margin-bottom:7px}.step p{font-size:13.5px}
+      .example-grid{gap:27px}.investor-quote{font-size:17px}.demo-content{padding:14px}.demo-topbar{padding:0 15px}.asset-thumb{width:80px;min-width:80px;height:91px}.asset-title{font-size:14px}.asset-meta{font-size:11px}.buyer-box{padding:14px}.buyer-main strong{font-size:12px}.buyer-pill{font-size:9px;padding:6px}.buyer-avatar{width:36px;height:36px;min-width:36px}
+      .benefit-grid{grid-template-columns:1fr}.benefit,.benefit:nth-child(5){grid-column:span 1;min-height:unset;padding:25px}.benefit .benefit-icon{margin-bottom:21px}
+      .privacy-cards{grid-template-columns:1fr 1fr}.privacy-card{min-height:181px;padding:17px 14px}.privacy-card strong{font-size:12px}.privacy-card p{font-size:10.5px}.privacy-card .icon{margin-bottom:15px}
+      .faq-item summary{font-size:13.5px;min-height:70px}.faq-item p{padding-right:12px}
+      .contact-inner{padding:41px 24px;border-radius:23px}.contact h2{font-size:35px}.contact .button{width:100%}
+      .footer-inner{flex-direction:column;align-items:flex-start;gap:23px}.footer-links{gap:18px}.site-footer{padding-bottom:30px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 20 5v6c0 5-3 8.5-8 11-5-2.5-8-6-8-11V5l8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-user-check" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 6-6 6 6 0 0 1 5.5 3.6M15 18l2.2 2.2L22 15"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M14 2v6h5M8 13h8M8 17h8"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M10 4v16M3 15h18"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4h16v-4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 1.8 7 7.2 3-7.2 3L12 22l-2-7-7-3 7-3 2-7Z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 14.5 14.5 9M8 7H6a4.5 4.5 0 0 0 0 9h3m6-9h3a4.5 4.5 0 0 1 0 9h-3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13c6 4 12 4 18 0"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 3 21 21M10.6 5.2A10 10 0 0 1 12 5c5.5 0 9 7 9 7-.7 1.3-1.5 2.4-2.5 3.5M6.1 6.1C3.9 7.5 3 12 3 12s3.5 7 9 7a9 9 0 0 0 4.1-.9"/><path d="M9.2 9.2a4 4 0 0 0 5.6 5.6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 21v-2a7 7 0 0 1 14 0v2M16 5a3 3 0 0 1 0 6m2 3a6 6 0 0 1 4 6v1"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M2.5 6a2 2 0 0 1 2-2H10l2.5 3H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4.5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#start" class="brand" aria-label="OffMarketDeal – Startseite">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M5 11h17v16H5zM12 4h16v17H12z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></span>
+        <span>OffMarket<span>Deal</span></span>
+      </a>
+      <nav class="nav-links" id="primary-nav" aria-label="Hauptnavigation">
+        <a href="#problem">Das Problem</a><a href="#funktion">So funktioniert's</a><a href="#vorteile">Vorteile</a><a href="#datenschutz">Datenschutz</a>
+      </nav>
+      <a href="#kontakt" class="button button-dark header-cta">Demo anfragen <svg class="icon icon-sm"><use href="#i-arrow-up-right"/></svg></a>
+      <button id="menuToggle" class="mobile-toggle" aria-label="Menü öffnen" aria-controls="primary-nav" aria-expanded="false"><svg class="icon"><use id="menuIcon" href="#i-menu"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="start" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span class="subtle-dot"></span> Ihr digitaler Immobilienassistent</div>
+          <h1 id="hero-title">Der passende Käufer ist vielleicht <span class="italic-accent">schon</span> in Ihren Kontakten.</h1>
+          <p class="lead">Stellen Sie sich einen Assistenten vor, der Ihre Immobilienangebote und Investorensuchprofile im Blick hat – und erkennt, wenn beides zusammenpasst. <strong>Automatisch, intelligent und diskret.</strong></p>
+          <div class="hero-actions">
+            <a href="#kontakt" class="button button-dark">Persönliche Demo anfragen <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            <a href="#funktion" class="button button-outline">So funktioniert's <svg class="icon"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="hero-note"><svg class="icon icon-sm"><use href="#i-check-circle"/></svg><span>Bestehende Daten nutzen</span><span class="sep"></span><span>Kontrolle behalten</span></div>
+        </div>
+        <div class="visual-wrap" aria-label="Illustration eines Immobilienangebots mit einem passenden Investorenprofil">
+          <div class="hero-visual">
+            <div class="visual-topline"><span>OFFMARKETDEAL / MATCHING</span><span><i class="subtle-dot"></i> INTERNER ARBEITSBEREICH</span></div>
+            <svg class="art-building" viewBox="0 0 620 580" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+              <defs>
+                <linearGradient id="front" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8db3a7"/><stop offset=".5" stop-color="#537b76"/><stop offset="1" stop-color="#244947"/></linearGradient>
+                <linearGradient id="side" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#274b4b"/><stop offset="1" stop-color="#0a2629"/></linearGradient>
+                <linearGradient id="reflect" x1="0" y1="0" x2="1" y2=".4"><stop offset="0" stop-color="#b5d2bf" stop-opacity=".65"/><stop offset=".42" stop-color="#9ac2b4" stop-opacity=".06"/><stop offset="1" stop-color="#d4e1b8" stop-opacity=".23"/></linearGradient>
+                <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6158"/><stop offset="1" stop-color="#102d2b"/></linearGradient>
+                <pattern id="frontWindows" patternUnits="userSpaceOnUse" width="42" height="42"><path d="M4 0V42M0 4H42M0 39H42" stroke="#173f40" stroke-width="7" opacity=".75"/><path d="M13 9h22v20H13z" fill="#a5c6ad" opacity=".085"/></pattern>
+                <pattern id="sideWindows" patternUnits="userSpaceOnUse" width="32" height="42"><path d="M3 0V42M0 4H32M0 39H32" stroke="#071d20" stroke-width="5" opacity=".7"/><path d="M8 11h14v18H8z" fill="#89b8af" opacity=".13"/></pattern>
+                <clipPath id="frontClip"><polygon points="184,148 430,72 430,523 184,573"/></clipPath>
+                <clipPath id="sideClip"><polygon points="430,72 552,144 552,559 430,523"/></clipPath>
+              </defs>
+              <circle cx="434" cy="151" r="225" fill="#b0d7bd" opacity=".055"/>
+              <circle cx="434" cy="151" r="178" fill="#b0d7bd" opacity=".05"/>
+              <path d="M0 457 100 428V580H0Z" fill="#20443f"/><path d="M50 412 155 387V580H50Z" fill="#28514b"/><path d="M74 416h12v170H74m24-178h12v180H98m24-187h12v188h-12" fill="#d6eacf" opacity=".11"/>
+              <path d="M484 332 605 286V580H484Z" fill="#21463f"/><path d="M510 337v240m23-252v252m24-260v260m26-269v269" stroke="#d5edcf" stroke-width="5" opacity=".08"/>
+              <path d="M0 540 310 485l310 61v34H0z" fill="url(#ground)"/>
+              <path d="M184 148 430 72 430 523 184 573Z" fill="url(#front)" stroke="#a5c4ac" stroke-width="1.5"/>
+              <path d="M430 72 552 144 552 559 430 523Z" fill="url(#side)" stroke="#6e9b8d" stroke-width="1.5"/>
+              <g clip-path="url(#frontClip)"><rect x="178" y="65" width="275" height="520" fill="url(#frontWindows)"/><path d="M195 170 340 125V570H195Z" fill="url(#reflect)" opacity=".4"/><path d="M378 104V554" stroke="#d5ead3" stroke-width="6" opacity=".09"/></g>
+              <g clip-path="url(#sideClip)"><rect x="428" y="73" width="139" height="500" fill="url(#sideWindows)"/><path d="M436 95 541 153V550L436 519Z" fill="url(#reflect)" opacity=".18"/></g>
+              <path d="M184 148 430 72l122 72" stroke="#c0ddbf" stroke-width="3" fill="none" opacity=".7"/>
+              <path d="M0 569 194 515M420 529l200 40" stroke="#d5efdc" stroke-width="2" opacity=".12"/>
+              <path d="m5 579 189-57m20 55 204-48m75 24 105 26" stroke="#d5efdc" stroke-width="1" opacity=".14"/>
+              <path d="M151 474c-27-29-63-4-62 22 1 18 19 22 29 23v61h5v-62c25 8 47-18 28-44ZM578 455c-22-24-49-4-47 18 2 15 14 18 25 19v79h5v-79c21 2 33-19 17-37Z" fill="#31564a"/>
+            </svg>
+            <div class="visual-bottom-gradient"></div>
+            <div class="property-note"><div class="tiny">IMMOBILIENANGEBOT</div><strong>Bürogebäude · Hamburg</strong><div class="value">Kaufpreis: 5.000.000 €</div></div>
+            <div class="visual-stamp">NICHT ÖFFENTLICH</div>
+            <div class="match-card">
+              <div class="match-head"><span class="match-icon"><svg class="icon"><use href="#i-spark"/></svg></span><span><small>POTENZIELLER MATCH</small><strong>Passender Kontakt erkannt</strong></span></div>
+              <div class="match-body"><div class="match-name">Investor aus Ihrem Netzwerk</div><div class="match-row"><svg class="icon"><use href="#i-target"/></svg> Gesucht: Büroimmobilien in Norddeutschland</div><div class="match-row"><svg class="icon"><use href="#i-briefcase"/></svg> Investitionsrahmen: 3–8 Mio. €</div><div class="match-status"><svg class="icon"><use href="#i-check-circle"/></svg> Hohe Übereinstimmung der Suchkriterien</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip" aria-label="Die wichtigsten Vorteile auf einen Blick"><div class="container trust-list">
+      <div class="trust-item"><svg class="icon"><use href="#i-folder"/></svg>Ihre vorhandenen Daten sind die Basis</div>
+      <div class="trust-item"><svg class="icon"><use href="#i-eye-off"/></svg>Für diskrete Off-Market-Geschäfte</div>
+      <div class="trust-item"><svg class="icon"><use href="#i-user-check"/></svg>Entscheidungen bleiben bei Ihnen</div>
+    </div></div>
+
+    <section id="problem" class="section" aria-labelledby="problem-title">
+      <div class="container problem-grid">
+        <div class="section-head reveal">
+          <div class="eyebrow">Das Problem</div>
+          <h2 id="problem-title">Ihre nächste Geschäftschance liegt vielleicht schon <span class="italic-accent">im Posteingang.</span></h2>
+          <p>Sie haben eine Gewerbeimmobilie im Angebot und suchen einen Käufer. Gleichzeitig erhalten Sie E-Mails mit konkreten Suchwünschen, verwalten Kundenlisten und arbeiten mit PDF-Dokumenten und Excel-Tabellen.</p>
+          <p>Doch wer behält all diese Informationen im Kopf? Der passende Investor könnte längst in Ihren Unterlagen stehen – ohne dass Sie es wissen.</p>
+          <div class="statement">Genau so bleiben wertvolle Geschäftsmöglichkeiten unentdeckt.</div>
+        </div>
+        <div class="clutter-area reveal" aria-label="Verteilte Kunden- und Immobilieninformationen in verschiedenen Dokumenten">
+          <div class="floating-doc doc-a"><span class="doc-icon"><svg class="icon"><use href="#i-mail"/></svg></span><span><span class="doc-title">Investorenanfrage</span><span class="doc-desc">Posteingang · vor 4 Monaten</span></span><span class="doc-lines"><span></span><span></span></span></div>
+          <div class="floating-doc doc-b"><span class="doc-icon orange"><svg class="icon"><use href="#i-file"/></svg></span><span><span class="doc-title">Immobilienexposé.pdf</span><span class="doc-desc">Gewerbeobjekt · Hamburg</span></span><span class="doc-lines"><span></span><span></span></span></div>
+          <div class="floating-doc doc-c"><span class="doc-icon blue"><svg class="icon"><use href="#i-table"/></svg></span><span><span class="doc-title">Käuferliste_2026.xlsx</span><span class="doc-desc">Bestehende Kontakte</span></span><span class="doc-lines"><span></span><span></span></span></div>
+          <div class="clutter-question" aria-hidden="true">?</div>
+          <div class="clutter-caption">Viele Informationen. Wenig Überblick.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="funktion" class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-intro reveal">
+          <div class="section-head"><div class="eyebrow">So funktioniert OffMarketDeal</div><h2 id="process-title">Ihre Daten. Unsere KI. <span class="italic-accent">Neue Verbindungen.</span></h2></div>
+          <p class="lead">Kein neuer komplizierter Prozess. OffMarketDeal arbeitet mit den Informationen, die Sie bereits haben.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-upload"/></svg></span><span class="step-number">01 / 04</span></div><h3>Daten bereitstellen</h3><p>Laden Sie Angebote, Investorenprofile, PDFs und Excel-Listen in Ihren geschützten Arbeitsbereich.</p></article>
+          <article class="step reveal"><div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-spark"/></svg></span><span class="step-number">02 / 04</span></div><h3>Zusammenhänge erkennen</h3><p>Die KI liest die Dokumente, versteht Suchkriterien und gleicht sie mit Ihren Immobilien ab.</p></article>
+          <article class="step reveal"><div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-target"/></svg></span><span class="step-number">03 / 04</span></div><h3>Passende Käufer finden</h3><p>Potenzielle Übereinstimmungen werden sichtbar – inklusive der Kriterien, die zusammenpassen.</p></article>
+          <article class="step reveal"><div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-user-check"/></svg></span><span class="step-number">04 / 04</span></div><h3>Sie entscheiden</h3><p>Sie prüfen die Vorschläge und bestimmen selbst, ob und wann jemand kontaktiert wird.</p></article>
+        </div>
+        <p class="process-footnote"><svg class="icon"><use href="#i-info"/></svg> E-Mail-Informationen können bei entsprechender Anbindung und ausdrücklicher Freigabe berücksichtigt werden.</p>
+      </div>
+    </section>
+
+    <section class="example" aria-labelledby="example-title">
+      <div class="container example-grid">
+        <div class="section-head reveal">
+          <div class="eyebrow">Ein einfaches Beispiel</div>
+          <h2 id="example-title">Ein Objekt in Hamburg. Eine E-Mail von damals. <span class="italic-accent">Ein Treffer.</span></h2>
+          <p class="lead">Sie vermarkten ein Bürogebäude für 5 Millionen Euro. Vor einigen Monaten schrieb Ihnen ein Investor:</p>
+          <blockquote class="investor-quote">„Wir suchen Büroimmobilien in Norddeutschland mit einem Investitionsvolumen zwischen 3 und 8 Millionen Euro.“</blockquote>
+          <div class="quote-source">OffMarketDeal kann diese Verbindung erkennen – auch wenn die Anfrage in Ihren Unterlagen längst in Vergessenheit geraten ist.</div>
+        </div>
+        <div class="reveal">
+          <div class="demo-ui" aria-label="Vereinfachte beispielhafte Matching-Ansicht">
+            <div class="demo-topbar"><span class="demo-label">MATCHING-ÜBERSICHT</span><span class="demo-tag">Beispieldarstellung</span></div>
+            <div class="demo-content">
+              <div class="mini-heading">IHR IMMOBILIENANGEBOT</div>
+              <div class="asset-box">
+                <div class="asset-thumb" aria-hidden="true"><svg viewBox="0 0 120 106" preserveAspectRatio="xMidYMid slice"><rect width="120" height="106" fill="#c7d9ce"/><path d="M24 23 77 9 103 22v90H24Z" fill="#42665f"/><path d="M24 23 77 9v102H24Z" fill="#87a69b"/><path d="M77 9 103 22v90H77Z" fill="#274940"/><path d="M33 32 70 22M33 47l37-10M33 63l37-11M33 79l37-11M33 95l37-11" stroke="#254940" stroke-width="5"/><path d="M39 27v68M56 23v68M81 25v78M92 30v73" stroke="#234239" stroke-width="4"/><path d="M0 100H120" stroke="#d9e7dc" stroke-width="14"/></svg></div>
+                <div><div class="asset-title">Bürogebäude in Hamburg</div><div class="asset-meta">Assetklasse: Büro / Gewerbe<br>Standort: Hamburg, Norddeutschland</div><span class="budget">Angebot: 5.000.000 €</span></div>
+              </div>
+              <div class="connection"><span class="connection-icon"><svg class="icon"><use href="#i-link"/></svg></span></div>
+              <div class="mini-heading">POTENZIELLER INVESTOR AUS IHREN KONTAKTEN</div>
+              <div class="buyer-box">
+                <div class="buyer-line"><div class="buyer-main"><div class="buyer-avatar">IN</div><div><strong>Suchprofil · Büroimmobilien</strong><small>Bereits in Ihren Unterlagen vorhanden</small></div></div><span class="buyer-pill">Passend</span></div>
+                <div class="criteria"><span class="criterion"><svg class="icon"><use href="#i-check"/></svg> Objekttyp</span><span class="criterion"><svg class="icon"><use href="#i-check"/></svg> Standort</span><span class="criterion"><svg class="icon"><use href="#i-check"/></svg> Budget</span></div>
+              </div>
+              <button id="detailsToggle" type="button" class="example-toggle" aria-controls="matchDetails" aria-expanded="false">Warum passen diese beiden Profile zusammen? <svg class="icon icon-sm chevron"><use href="#i-chev"/></svg></button>
+              <div id="matchDetails" class="match-details" hidden><p><strong>Objekttyp:</strong> Büroimmobilie entspricht dem Investorenwunsch.<br><strong>Region:</strong> Hamburg liegt in der gesuchten Region Norddeutschland.<br><strong>Budget:</strong> 5 Mio. € liegen innerhalb des angegebenen Rahmens von 3 bis 8 Mio. €.</p></div>
+            </div>
+          </div>
+          <p class="demo-disclaimer">Fiktives, vereinfachtes Beispiel zur Veranschaulichung der Funktionsweise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vorteile" class="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-head centered reveal"><div class="eyebrow">Ihre Vorteile</div><h2 id="benefits-title">Weniger Verwaltungsaufwand. <span class="italic-accent">Mehr Möglichkeiten.</span></h2><p class="lead" style="margin-inline:auto">OffMarketDeal macht vorhandenes Wissen nutzbar – damit Sie Ihre Zeit dort einsetzen, wo sie wirklich zählt.</p></div>
+        <div class="benefit-grid">
+          <article class="benefit reveal"><span class="benefit-icon"><svg class="icon"><use href="#i-clock"/></svg></span><h3>Weniger suchen</h3><p>Statt stundenlang E-Mails, PDFs und Excel-Listen zu durchforsten, lassen Sie relevante Verbindungen erkennen.</p></article>
+          <article class="benefit reveal"><span class="benefit-icon"><svg class="icon"><use href="#i-spark"/></svg></span><h3>Mehr Chancen entdecken</h3><p>Identifizieren Sie mögliche Käufer, die in Ihren bestehenden Kontakten bisher unentdeckt geblieben sind.</p></article>
+          <article class="benefit reveal"><span class="benefit-icon"><svg class="icon"><use href="#i-target"/></svg></span><h3>Gezielter vermitteln</h3><p>Finden Sie Investoren anhand konkreter Suchkriterien statt durch mühsames manuelles Durchsuchen.</p></article>
+          <article class="benefit reveal"><span class="benefit-icon"><svg class="icon"><use href="#i-eye-off"/></svg></span><h3>Diskret bleiben</h3><p>Vermitteln Sie Off-Market-Immobilien gezielt, ohne Ihre Objekte auf öffentlichen Immobilienportalen anbieten zu müssen.</p></article>
+          <article class="benefit reveal"><span class="benefit-icon"><svg class="icon"><use href="#i-users"/></svg></span><h3>Kontakte besser nutzen</h3><p>Holen Sie mehr aus dem Netzwerk heraus, das Sie sich über Jahre aufgebaut haben. Ihre Beziehungen bleiben Ihr Kapital.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="datenschutz" class="privacy" aria-labelledby="privacy-title">
+      <div class="container privacy-grid">
+        <div class="reveal"><div class="eyebrow">Für Off-Market entwickelt</div><h2 id="privacy-title">Ihre Kontakte bleiben <span class="italic-accent">Ihre Kontakte.</span></h2><p>Gerade bei Gewerbeimmobilien zählen Vertraulichkeit und persönliche Beziehungen. OffMarketDeal ist kein öffentliches Immobilienportal, auf dem andere Makler Ihre Listen oder vertraulichen Objektdaten einsehen können.</p><p>Die Plattform ist auf getrennte, geschützte Arbeitsbereiche und berechtigungsbasierten Zugriff ausgelegt. Sie kontrollieren, welche Informationen Sie bereitstellen und mit wem sie geteilt werden.</p><p class="privacy-note">Ihre Immobilien. Ihre Daten. Ihre Entscheidung.</p></div>
+        <div class="privacy-cards reveal">
+          <div class="privacy-card"><svg class="icon"><use href="#i-lock"/></svg><strong>Eigener Datenbereich</strong><p>Für jeden Kunden ein persönlicher, geschützter Arbeitsbereich.</p></div>
+          <div class="privacy-card"><svg class="icon"><use href="#i-shield"/></svg><strong>Zugriff mit Berechtigung</strong><p>Vertrauliche Informationen sind nicht allgemein einsehbar.</p></div>
+          <div class="privacy-card"><svg class="icon"><use href="#i-eye-off"/></svg><strong>Keine öffentliche Anzeige</strong><p>Off-Market-Angebote müssen nicht öffentlich inseriert werden.</p></div>
+          <div class="privacy-card"><svg class="icon"><use href="#i-user-check"/></svg><strong>Volle Entscheidungshoheit</strong><p>Nur Sie entscheiden über Kontaktaufnahme und Weitergabe.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="broker" aria-labelledby="broker-title">
+      <div class="container broker-grid">
+        <div class="reveal"><div class="eyebrow">Mensch und Technologie</div><h2 id="broker-title">OffMarketDeal ersetzt keinen Makler. <span>Es macht ihn leistungsfähiger.</span></h2></div>
+        <div class="broker-content reveal"><p>Die Software führt keine Verkaufsgespräche, pflegt keine persönlichen Beziehungen und trifft keine Geschäftsentscheidungen. Sie übernimmt die zeitaufwendige Arbeit im Hintergrund: Informationen lesen, Suchkriterien vergleichen und mögliche Chancen sichtbar machen.</p><div class="broker-list"><div class="broker-list-item"><svg class="icon"><use href="#i-check-circle"/></svg> Sie bleiben der Experte.</div><div class="broker-list-item"><svg class="icon"><use href="#i-check-circle"/></svg> Sie behalten die Kundenbeziehung.</div><div class="broker-list-item"><svg class="icon"><use href="#i-check-circle"/></svg> Sie entscheiden über den Abschluss.</div></div></div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="section-head reveal"><div class="eyebrow">Häufige Fragen</div><h2 id="faq-title">Gut zu wissen.</h2><p>OffMarketDeal soll Ihnen Arbeit abnehmen, nicht neue schaffen. Die wichtigsten Antworten auf einen Blick.</p></div>
+        <div class="faq-list reveal">
+          <details class="faq-item"><summary>Muss ich meine Arbeitsweise komplett verändern? <span class="plus"><svg class="icon icon-sm"><use href="#i-plus"/></svg></span></summary><p>Nein. Die Idee ist, vorhandene Informationen aus Angeboten, Kontaktlisten und Dokumenten nutzbar zu machen – ohne sie erst stundenlang in neue Tabellen übertragen zu müssen.</p></details>
+          <details class="faq-item"><summary>Welche Informationen kann OffMarketDeal berücksichtigen? <span class="plus"><svg class="icon icon-sm"><use href="#i-plus"/></svg></span></summary><p>Immobilienangebote, Investorenprofile, PDF-Dokumente und Excel-Listen. Auch E-Mail-Informationen können bei entsprechender technischer Anbindung und Freigabe verarbeitet werden.</p></details>
+          <details class="faq-item"><summary>Werden meine Objekte oder Kontakte öffentlich sichtbar? <span class="plus"><svg class="icon icon-sm"><use href="#i-plus"/></svg></span></summary><p>Nein, OffMarketDeal ist nicht als öffentliches Immobilienportal konzipiert. Persönliche, geschützte Arbeitsbereiche und Berechtigungen sollen dafür sorgen, dass vertrauliche Daten unter Ihrer Kontrolle bleiben.</p></details>
+          <details class="faq-item"><summary>Kontaktiert die Software Investoren automatisch? <span class="plus"><svg class="icon icon-sm"><use href="#i-plus"/></svg></span></summary><p>Nein. OffMarketDeal zeigt Ihnen mögliche Übereinstimmungen. Sie prüfen jeden Vorschlag und entscheiden selbst, ob und wann Sie einen Investor oder Eigentümer ansprechen möchten.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact" aria-labelledby="contact-title">
+      <div class="container"><div class="contact-inner"><div class="contact-content"><h2 id="contact-title">Damit aus Kontakten <span>neue Immobiliengeschäfte</span> werden.</h2><p>Weniger suchen. Mehr passende Käufer finden. Diskret vermitteln. Lernen Sie OffMarketDeal in einer persönlichen Vorstellung kennen.</p></div><a class="button button-primary" id="contactLink" href="mailto:kontakt@offmarketdeal.de?subject=Demoanfrage%20OffMarketDeal">Jetzt Demo anfragen <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><div><a href="#start" class="brand" aria-label="Zurück zum Start"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M5 11h17v16H5zM12 4h16v17H12z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></span><span>OffMarket<span>Deal</span></span></a><div class="footer-copy">© <span id="year">2026</span> OffMarketDeal. Ihr digitaler Immobilienassistent.</div></div><nav class="footer-links" aria-label="Footernavigation"><a href="#funktion">So funktioniert's</a><a href="#datenschutz">Diskretion & Datenschutz</a><a id="footerContact" href="mailto:kontakt@offmarketdeal.de?subject=Kontakt%20OffMarketDeal">Kontakt</a></nav></div></footer>
+  <script>
+    // VOR DER VEROEFFENTLICHUNG: Hier Ihre reale Kontaktadresse eintragen.
+    const CONTACT_EMAIL = 'kontakt@offmarketdeal.de'; // Platzhalter – bitte pruefen/ersetzen.
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+    document.getElementById('contactLink').href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Demoanfrage OffMarketDeal');
+    document.getElementById('footerContact').href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Kontakt OffMarketDeal');
+
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primary-nav');
+    const menuIcon = document.getElementById('menuIcon');
+    const setMenu = (open) => {
+      primaryNav.classList.toggle('is-open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+      menuIcon.setAttribute('href', open ? '#i-x' : '#i-menu');
+    };
+    menuToggle.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+    primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') setMenu(false); });
+    document.addEventListener('click', e => { if(!e.target.closest('.site-header')) setMenu(false); });
+
+    const toggle = document.getElementById('detailsToggle');
+    const matchDetails = document.getElementById('matchDetails');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      matchDetails.hidden = expanded;
+    });
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {if(entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }});
+      }, {threshold:.08,rootMargin:'0px 0px 10px 0px'});
+      document.querySelectorAll('.reveal').forEach((el,i) => {el.style.transitionDelay = (i%4)*55 + 'ms';observer.observe(el);});
+    } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  </script>
+</body>
+</html>
