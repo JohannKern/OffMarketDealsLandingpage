@@ -55,9 +55,9 @@ angemeldete Git-Identität voraus.
 
 ## Vor einer Veröffentlichung prüfen
 
-- Die E-Mail-Adresse `kontakt@offmarketdeals.de` in `index.html` ist ein
-  Platzhalter. Prüfe und ersetze `CONTACT_EMAIL` sowie die beiden fest im HTML
-  hinterlegten `mailto:`-Links durch die tatsächlich gewünschte Kontaktadresse.
+- Die Kontaktlinks und `CONTACT_EMAIL` in `index.html` verwenden
+  `johann.kern1161@gmail.com`. Passe alle Einträge an, falls sich die
+  Kontaktadresse ändert.
 - Ergänze ein rechtskonformes Impressum und eine individuelle
   Datenschutzerklärung und verlinke sie im Footer. Die Beschreibung auf der
   Landingpage ersetzt keine Datenschutzerklärung.
